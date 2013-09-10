@@ -40,7 +40,7 @@ end
 if ext.is_a?(Hash)
   File.open(ymlfile, 'a') do |fh|
     ext.each do | name, cfg |
-      uri = uri.parse cfg
+      uri = URI.parse cfg
       adapter = if uri.scheme == "mysql"
         "mysql2"
       else
