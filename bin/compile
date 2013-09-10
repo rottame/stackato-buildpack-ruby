@@ -32,21 +32,25 @@ function bundle_install {
     unset RUBYOPT BUNDLE_BIN_PATH GEM_PATH GEM_HOME BUNDLE_GEMFILE
     puts-step "Installing gem dependencies"
     bundle install --path rubygems 2>&1 | indent
+    if [ ${PIPESTATUS[0]} -gt 0 ]; then exit 1; fi
 }
 
 function write_database_yml {
     puts-step "Writing database.yml"
     ruby "$ROOT_DIR/opt/write_database_yml.rb" | indent
+    if [ ${PIPESTATUS[0]} -gt 0 ]; then exit 1; fi
 }
 
 function write_boot_config {
     puts-step "Writing config/boot.rb"
     ruby "$ROOT_DIR/opt/write_boot_config.rb" | indent
+    if [ ${PIPESTATUS[0]} -gt 0 ]; then exit 1; fi
 }
 
 function db_migrate {
     puts-step "Running rake db:migrate"
     bundle exec rake db:migrate --trace 2>&1 | indent
+    if [ ${PIPESTATUS[0]} -gt 0 ]; then exit 1; fi
 }
 
 function create_asset_plugin {
