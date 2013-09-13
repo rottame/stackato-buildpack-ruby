@@ -25,6 +25,17 @@ File.open(ymlfile, 'w') do |fh|
   username: #{uri.user}
   password: #{uri.password}
   database: #{database}
+
+developmet:
+  adapter: #{adapter}
+  encoding: utf8
+  pool: 5
+  reconnect: false
+  host: #{uri.host}
+  port: #{uri.port}
+  username: #{uri.user}
+  password: #{uri.password}
+  database: #{database}
 ")
 end
 
