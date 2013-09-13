@@ -74,7 +74,7 @@ bundle_install
 write_database_yml
 write_boot_config
 #db_migrate
-create_asset_plugin
+#create_asset_plugin
 
 
 # Store new artifacts in cache.
