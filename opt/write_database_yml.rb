@@ -26,7 +26,7 @@ File.open(ymlfile, 'w') do |fh|
   password: #{uri.password}
   database: #{database}
 
-developmet:
+development:
   adapter: #{adapter}
   encoding: utf8
   pool: 5
