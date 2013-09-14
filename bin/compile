@@ -31,6 +31,7 @@ function puts-step (){
 function bundle_install {
     unset RUBYOPT BUNDLE_BIN_PATH GEM_PATH GEM_HOME BUNDLE_GEMFILE
     puts-step "Installing gem dependencies"
+    echo ${ruby -v}
     bundle install --path rubygems 2>&1 | indent
     if [ ${PIPESTATUS[0]} -gt 0 ]; then exit 1; fi
 }
