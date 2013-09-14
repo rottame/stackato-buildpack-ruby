@@ -11,9 +11,6 @@ ROOT_DIR=$(dirname $BIN_DIR)
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-# use the latest ruby (1.9) in stackato
-export PATH=/opt/rubies/current/bin:$PATH
-
 CACHED_DIRS="rubygems"
 
 mkdir -p $CACHE_DIR
@@ -31,7 +28,6 @@ function puts-step (){
 function bundle_install {
     unset RUBYOPT BUNDLE_BIN_PATH GEM_PATH GEM_HOME BUNDLE_GEMFILE
     puts-step "Installing gem dependencies"
-    echo ${ruby -v}
     bundle install --path rubygems 2>&1 | indent
     if [ ${PIPESTATUS[0]} -gt 0 ]; then exit 1; fi
 }
