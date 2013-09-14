@@ -6,11 +6,8 @@ require 'uri'
 puts "Writing config/database.yml from $DATABASE_URL"
 uri = URI.parse ENV['DATABASE_URL']
 ymlfile = File.join(File.join(ENV['HOME'], 'config', 'database.yml'))
-adapter = if uri.scheme == "mysql"
-            "mysql2"
-          else
-            "postgresql"
-          end
+adapter = uri.scheme
+
 _, _, database = uri.path.rpartition "/"
 
 File.open(ymlfile, 'w') do |fh|
